@@ -1,0 +1,14 @@
+# Python Requirements for IDO Compiler & Decompiler
+# Install with: pip install -r requirements.txt
+
+# No external dependencies required!
+# The script uses only Python standard library:
+# - sys
+# - os  
+# - zlib
+# - struct
+# - json
+# - pathlib
+# - csv
+
+# All required modules are built into Python 3.x

@@ -1,0 +1,23 @@
+{
+  "name": "ido-editor",
+  "version": "1.0.0",
+  "description": "IDO Compiler & Decompiler - A modern GUI tool for compiling and decompiling game assets",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --enable-logging"
+  },
+  "keywords": [
+    "ido",
+    "compiler",
+    "decompiler",
+    "game-tools",
+    "electron"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^39.2.6"
+  }
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDO Compiler & Decompiler</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="header-content">
+          <h1 class="app-title">
+            <span class="title-icon">📦</span>
+            IDO Tool
+          </h1>
+          <p class="app-subtitle">Compiler & Decompiler for Game Assets</p>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Tab Navigation -->
+        <div class="tab-container">
+          <button class="tab-button active" data-tab="decompile">
+            <span class="tab-icon">📂</span>
+            Decompile
+          </button>
+          <button class="tab-button" data-tab="compile">
+            <span class="tab-icon">📦</span>
+            Compile
+          </button>
+        </div>
+
+        <!-- Decompile Tab -->
+        <div class="tab-content active" id="decompile-tab">
+          <div class="form-section">
+            <div class="form-group">
+              <label class="form-label">
+                <span class="label-icon">📄</span>
+                Select IDO File
+              </label>
+              <div class="input-group">
+                <input 
+                  type="text" 
+                  id="decompile-input" 
+                  class="form-input" 
+                  placeholder="No file selected..." 
+                  readonly
+                >
+                <button id="decompile-input-btn" class="btn btn-secondary">
+                  Browse
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                <span class="label-icon">💾</span>
+                Output Location
+              </label>
+              <div class="input-group">
+                <input 
+                  type="text" 
+                  id="decompile-output" 
+                  class="form-input" 
+                  placeholder="Output file path..." 
+                  readonly
+                >
+                <button id="decompile-output-btn" class="btn btn-secondary">
+                  Save As
+                </button>
+              </div>
+            </div>
+
+            <button id="decompile-run-btn" class="btn btn-primary btn-large" disabled>
+              <span class="btn-icon">▶</span>
+              Start Decompilation
+            </button>
+          </div>
+        </div>
+
+        <!-- Compile Tab -->
+        <div class="tab-content" id="compile-tab">
+          <div class="form-section">
+            <div class="form-group">
+              <label class="form-label">
+                <span class="label-icon">📁</span>
+                Select Input File/Folder
+              </label>
+              <div class="input-group">
+                <input 
+                  type="text" 
+                  id="compile-input" 
+                  class="form-input" 
+                  placeholder="No file/folder selected..." 
+                  readonly
+                >
+                <button id="compile-input-file-btn" class="btn btn-secondary">
+                  File
+                </button>
+                <button id="compile-input-folder-btn" class="btn btn-secondary">
+                  Folder
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                <span class="label-icon">💾</span>
+                Output IDO File
+              </label>
+              <div class="input-group">
+                <input 
+                  type="text" 
+                  id="compile-output" 
+                  class="form-input" 
+                  placeholder="Output .ido file path..." 
+                  readonly
+                >
+                <button id="compile-output-btn" class="btn btn-secondary">
+                  Save As
+                </button>
+              </div>
+            </div>
+
+            <button id="compile-run-btn" class="btn btn-primary btn-large" disabled>
+              <span class="btn-icon">▶</span>
+              Start Compilation
+            </button>
+          </div>
+        </div>
+
+        <!-- Log Console -->
+        <div class="console-section">
+          <div class="console-header">
+            <h3 class="console-title">
+              <span class="console-icon">📋</span>
+              Console Output
+            </h3>
+            <button id="clear-log-btn" class="btn btn-small">Clear</button>
+          </div>
+          <div id="log-container" class="log-container">
+            <div class="log-entry log-info">
+              <span class="log-timestamp">[00:00:00]</span>
+              <span class="log-message">Ready to process files...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+          <div class="status-item">
+            <span class="status-icon">⚙</span>
+            <span id="status-text">Idle</span>
+          </div>
+          <div class="status-item">
+            <span id="status-details"></span>
+          </div>
+        </div>
+      </main>
+
+      <!-- Credits Footer -->
+      <footer class="credits-footer">
+        <div class="credits-content">
+          <div class="credits-section">
+            <span class="credits-label">IDO Editor:</span>
+            <span class="credits-name">HanazonoArchive</span>
+          </div>
+          <div class="credits-divider">•</div>
+          <div class="credits-section">
+            <span class="credits-label">Compiler/Decompiler:</span>
+            <span class="credits-name">ultimatuuuum</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
