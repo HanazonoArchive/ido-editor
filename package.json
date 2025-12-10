@@ -51,7 +51,9 @@
           ]
         }
       ],
-      "icon": "icon.ico"
+      "icon": "icon.ico",
+      "forceCodeSigning": false,
+      "signAndEditExecutable": false
     },
     "mac": {
       "target": [
