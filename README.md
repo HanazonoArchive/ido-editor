@@ -1,4 +1,4 @@
-# IDO Compiler & Decompiler
+# IDO & DDS Compiler, Decompiler & Converter
 
 A modern, standalone GUI application for compiling and decompiling `.ido` game asset files. Built with Electron and Python.
 
