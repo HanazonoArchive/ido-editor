@@ -93,7 +93,7 @@ def decompile(input_path, output_path):
                     "type": file_type
                 }
             
-            # Decode EUC-KR to UTF-8 for XML
+            # Decode EUC-KR to UTF-8 for XML (preserve raw data)
             log("Decoding as EUC-KR encoded XML...")
             try:
                 xml_content = decompressed_data.decode('euc-kr')
@@ -102,8 +102,11 @@ def decompile(input_path, output_path):
                 log("Warning: Some characters could not be decoded perfectly", "WARNING")
                 xml_content = decompressed_data.decode('euc-kr', errors='replace')
             
-            # Add header comment
-            final_xml = f"{xml_content}\n<!-- IDO HEADER: {header_hex} -->"
+            # Add header comment (ensure newline only if content doesn't end with one)
+            if xml_content and not xml_content.endswith('\n'):
+                final_xml = f"{xml_content}\n<!-- IDO HEADER: {header_hex} -->"
+            else:
+                final_xml = f"{xml_content}<!-- IDO HEADER: {header_hex} -->"
             
             with open(output_path, 'w', encoding='utf-8') as out:
                 out.write(final_xml)
@@ -165,14 +168,13 @@ def compile_file(input_path, output_path):
             if not header:
                 raise Exception("Header not found in .meta file or embedded in XML")
             
-            # Encode to EUC-KR
-            clean_content = xml_content.strip()
+            # Encode to EUC-KR (preserve raw content - no strip())
             log("Encoding to EUC-KR...")
             try:
-                raw_bytes = clean_content.encode('euc-kr')
+                raw_bytes = xml_content.encode('euc-kr')
             except UnicodeEncodeError:
                 log("Warning: Some characters could not be mapped to EUC-KR", "WARNING")
-                raw_bytes = clean_content.encode('euc-kr', errors='replace')
+                raw_bytes = xml_content.encode('euc-kr', errors='replace')
         else:
             # Binary mode
             if not meta_header:
